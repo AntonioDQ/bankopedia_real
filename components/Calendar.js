@@ -1,7 +1,7 @@
 import * as Device from 'expo-device';
 import * as Notifications from 'expo-notifications';
 import React, { useState, useEffect, useRef } from 'react';
-import { Text, View, Button, Platform, StyleSheet,TouchableOpacity,Image } from 'react-native';
+import { Text, View, Button, Platform, StyleSheet,TouchableOpacity,Image, TouchableHighlight } from 'react-native';
 
 
 Notifications.setNotificationHandler({
@@ -36,7 +36,9 @@ export default function Calender({navigation}) {
     };
   }, []);
 
-
+    
+  
+   
 
   return (
     <View
@@ -46,6 +48,7 @@ export default function Calender({navigation}) {
         justifyContent: 'space-around',
         backgroundColor: "#1E1E1E"
       }}>
+         <Image source = {require('../assets/logo.png')} style = {styles.img}/>
         <View style={styles.homeContainer} >
           <TouchableOpacity onPress={() => navigation.navigate("Homepage_page")}>
         
@@ -64,27 +67,86 @@ export default function Calender({navigation}) {
               />
            </TouchableOpacity>
         </View> 
-      <Text style={styles.homeText}>Your expo push token: {expoPushToken}</Text>
-      <View style={{ alignItems: 'center', justifyContent: 'center' }}>
-        <Text style={styles.homeText}>Title: {notification && notification.request.content.title} </Text>
-        <Text style={styles.homeText}>Body: {notification && notification.request.content.body}</Text>
-        <Text style={styles.homeText}>Data: {notification && JSON.stringify(notification.request.content.data)}</Text>
-      </View>
-      <Button
-        title="Press to schedule a notification"
+      <Text style={styles.otherText}>Please select the type of reminder: {expoPushToken}</Text>
+      <View style = {styles.lineStyle} />
+
+
+
+        <TouchableHighlight>
+
+      <Button color="lightgrey" 
+        title="Press to schedule a notification to pay your taxes"
         onPress={async () => {
-          await schedulePushNotification();
+          await schedulePushNotification1();
         }}
       />
+        </TouchableHighlight>
+      <Button color="lightgrey"
+        title="Press to schedule a notification to pay your bills "
+        onPress={async () => {
+          await schedulePushNotification2();
+        }}
+      />
+
+
+      <Button color="lightgrey"
+        title="Press to schedule a notification to pay your credit card debt"
+        onPress={async () => {
+          await schedulePushNotification3();
+        }}
+      />
+
+      <Button color="lightgrey"
+        title="Press to schedule a notification to pay your mortgage "
+        onPress={async () => {
+          await schedulePushNotification4();
+        }}
+      />
+     
+     
+  
     </View>
   );
 }
 
-async function schedulePushNotification() {
+async function schedulePushNotification1() {
   await Notifications.scheduleNotificationAsync({
     content: {
-      title: "Bills are due! 💸💸💸",
-      body: 'Make sure to leave time for the post office!',
+      title: "Pay your taxes 💸💸💸" ,
+      body:"It's time to pay your taxes!",
+      data: { data: 'goes here' },
+    },
+    trigger: { seconds: 2 },
+  });
+}
+
+async function schedulePushNotification2() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Pay your bills! 💸💸💸" ,
+      body: "It's time to pay your bills!",
+      data: { data: 'goes here' },
+    },
+    trigger: { seconds: 2 },
+  });
+}
+
+async function schedulePushNotification3() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Pay your credit card debt! 💸💸💸" ,
+      body:"It's time to pay your credit card debt!",
+      data: { data: 'goes here' },
+    },
+    trigger: { seconds: 2 },
+  });
+}
+
+async function schedulePushNotification4() {
+  await Notifications.scheduleNotificationAsync({
+    content: {
+      title: "Pay your mortgage! 💸💸💸" ,
+      body:"It's time to pay your mortgage!",
       data: { data: 'goes here' },
     },
     trigger: { seconds: 2 },
@@ -131,11 +193,20 @@ homeContainer:{
 },
 
 homeText:{
-  fontSize:15,
+  fontSize:20,
   marginTop:6,
   marginLeft:3,
   color:"lightgrey",
 },
+
+otherText:{
+  fontSize:22,
+  fontWeight:"bold",
+  marginTop:100,
+  marginLeft:3,
+  color:"lightgrey",
+},
+
 accContainer:{
   position:"absolute",
   top:55,
@@ -143,4 +214,40 @@ accContainer:{
 },
 
 
+button3: {
+  fontSize: 10,
+  flexDirection: "row",
+  position: "absolute",
+  justifyContent: "center",
+  alignItems: "center",
+  bottom: 30,
+  height: 30,
+  width: 200,
+  
+},
+
+lineStyle:{
+  borderWidth: 2,
+  borderColor:'lightgrey',
+  marginVertical:-100,
+  paddingHorizontal:300,
+  marginHorizontal:0,
+},
+
+button_style: {
+  margin: 10,
+},
+
+selection:{
+  color:"lightgrey",
+},
+
+img:{
+    height:80,
+    width:220,
+    position:'absolute',
+    top:40,
+    left:95,
+  
+}
 });
