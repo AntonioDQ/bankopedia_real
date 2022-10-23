@@ -1,47 +1,69 @@
+
 import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
   View,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
+
 } from 'react-native';
 
-export default class Account extends Component {
-  render() {
-    return (
+
+export default function Account({ navigation }) {
+    
+
+  return (
+      
       <View style={styles.container}>
+        
+        
+        
+    
           <View style={styles.header}></View>
-          <Image style={styles.avatar} source={{uri: 'https://bootdey.com/img/Content/avatar/avatar2.png'}}/>
+          <View style={styles.homeContainer} >
+          <TouchableOpacity onPress={() => navigation.navigate("Homepage_page")}>
+        
+            <Image source = {require('../assets/arrow.png')} style = {{width: 25,height: 30}}/>
+          </TouchableOpacity>
+          <Text style={styles.homeText} onPress={() => navigation.navigate("Homepage_page")}>{'Home'}</Text>
+        </View>
+          <Image style={styles.avatar} source={{uri: 'https://geeks.eku.edu/sites/geeks.eku.edu/files/images/lingjie_cai.jpg'}}/>
+          
           <View style={styles.body}>
             <View style={styles.bodyContent}>
+              
               <Text style={styles.name}>John Doe</Text>
               <Text style={styles.info}>UX Designer / Mobile developer</Text>
               <Text style={styles.description}>Lorem ipsum dolor sit amet, saepe sapientem eu nam. Qui ne assum electram expetendis, omittam deseruisse consequuntur ius an,</Text>
               
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Bookmarked Articles</Text>  
+                <Text style ={styles.buttonTxt}>Bookmarked Articles</Text> 
               </TouchableOpacity>              
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Change Password</Text> 
+                <Text style ={styles.buttonTxt}>Change Password</Text> 
               </TouchableOpacity>
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Settings</Text>  
+                <Text style ={styles.buttonTxt}>Settings</Text>  
               </TouchableOpacity>    
               <TouchableOpacity style={styles.buttonContainer}>
-                <Text>Delete Account</Text>  
+                <Text style ={styles.buttonTxt}>Delete Account</Text>  
               </TouchableOpacity>    
             </View>
+            
         </View>
       </View>
     );
   }
-}
+
 
 const styles = StyleSheet.create({
   header:{
-    backgroundColor: "#00BFFF",
+    backgroundColor: '#1E1E1E',
     height:200,
+  },
+  backgroud:{
+    backgroundColor:"#2D2D2D"
   },
   avatar: {
     width: 130,
@@ -54,6 +76,20 @@ const styles = StyleSheet.create({
     position: 'absolute',
     marginTop:130
   },
+
+  homeContainer:{
+    position:'absolute',
+    top: 60,
+    left:12,
+    flexDirection:'row',
+  },
+
+  homeText:{
+    fontSize:15,
+    marginTop:6,
+    marginLeft:3,
+    color:"lightgrey",
+  },
   name:{
     fontSize:22,
     color:"#FFFFFF",
@@ -61,17 +97,14 @@ const styles = StyleSheet.create({
   },
   body:{
     marginTop:40,
+    
   },
   bodyContent: {
     flex: 1,
     alignItems: 'center',
     padding:30,
   },
-  name:{
-    fontSize:28,
-    color: "#696969",
-    fontWeight: "600"
-  },
+  
   info:{
     fontSize:16,
     color: "#00BFFF",
@@ -92,6 +125,9 @@ const styles = StyleSheet.create({
     marginBottom:20,
     width:250,
     borderRadius:30,
-    backgroundColor: "#00BFFF",
+    backgroundColor: "#1E1E1E",
+  },
+  buttonTxt:{
+    color:"lightgrey"
   },
 });

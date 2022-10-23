@@ -26,13 +26,24 @@ export default function News({ navigation }) {
           </TouchableOpacity>
           <Text style={styles.homeText} onPress={() => navigation.navigate("Homepage_page")}>{'Home'}</Text>
         </View>
+        <View style={styles.accContainer}>
+           <TouchableOpacity onPress={() => navigation.navigate("Account_page")}>
+            <Image  
+                source={{
+                  width:50,
+                  height:50,
+                  uri: "https://cdn4.iconfinder.com/data/icons/social-messaging-ui-color-and-shapes-3/177800/130-512.png",
+                }} 
+              />
+           </TouchableOpacity>
+        </View> 
 
           <Text style={styles.titleText}>{'NEWS'}</Text>
       
 
       <View style={{ Height: "auto", maxHeight: 710}}>
 
-        <ScrollView style={styles.scrollView} >
+        <ScrollView style={styles.scrollView}  >
       
           <Text style ={styles.date}>{'October 23'}</Text>
           <View style = {styles.lineStyle} />
@@ -169,6 +180,12 @@ export default function News({ navigation }) {
       alignItems: 'center',
       margin:0,
       
+    },
+
+    accContainer:{
+      position:"absolute",
+      top:55,
+      right:17
     },
 
     homeContainer:{

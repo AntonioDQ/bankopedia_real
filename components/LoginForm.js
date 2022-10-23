@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, StyleSheet, Keyboard,  TouchableWithoutFeedback, Text,Image } from 'react-native';
+import { View, StyleSheet, Keyboard, TouchableOpacity,TouchableWithoutFeedback, Text,Image } from 'react-native';
 import { TextInput, Button } from "@react-native-material/core";
 import { useLinkProps } from '@react-navigation/native';
 
@@ -16,7 +16,11 @@ export default function LoginForm({ navigation }) {
   return (
     <React.Fragment>
     <HideKeyboard>
+    
+    
     <View style={styles.container}>
+    
+    
       <Image source = {require('../assets/logo.png')} style = {styles.img}/>
         <TextInput label="Email" style={styles.input} color="#002100" />
         <TextInput label="Password" style={styles.input} color="#002100" />
@@ -42,6 +46,20 @@ export default function LoginForm({ navigation }) {
       justifyContent: 'center',
     },
   
+    homeContainer:{
+      position:'absolute',
+      top: 60,
+      left:12,
+      flexDirection:'row',
+    },
+
+    homeText:{
+      fontSize:15,
+      marginTop:6,
+      marginLeft:3,
+      color:"lightgrey",
+    },
+
     input: {
       width: "75%",
       marginBottom: "10%",
